@@ -14,7 +14,7 @@ function Separator(props) {
 const styles = StyleSheet.create({
     separator:{
         flex: 1,
-        borderTopWidth: 0.7,
+        borderTopWidth: 1,
         marginLeft: 60,
         marginRight: 25,
         borderColor: '#eceff1'

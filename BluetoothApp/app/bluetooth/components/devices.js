@@ -12,6 +12,7 @@ function Device(props){
             </View>
             <View style={styles.wrapperName}>
                 <Text style={styles.name}>{props.name}</Text>
+                <Text style={styles.adres}>Habla a: {props.address}</Text>
             </View>
             <Image style={styles.iconRight} source={props.iconRight}/>
         </TouchableOpacity>
@@ -57,6 +58,12 @@ const styles = StyleSheet.create({
     iconLeft:{
         width: 20,
         height: 20
+    },
+    adres:{
+        marginLeft: 40,
+        fontSize: 13,
+        fontWeight: 'bold',
+        color: 'gray'
     }
 })
 

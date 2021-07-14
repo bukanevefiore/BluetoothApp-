@@ -9,25 +9,13 @@ import BluetoothSerial, { disable, enable } from 'react-native-bluetooth-serial-
 
 
 function BluetoothList(props) {
-  /*  const lista = [
-        {
-            name: 'Cris',
-            key: '1'
-        },
-        {
-            name: 'Lara',
-            key: '2'
-        },
-    ];   */
+ 
     const [lista, setLista] = useState([]);
     const [bolEnable, setBolEnable] = useState(false);
 
     const renderEmpty = () => <Empty text='No hay dispositivos'/>
     const renderItem = ({item}) => {
         return <Device {...item} iconLeft={require('../../iconos/ic_laptop.png')} iconRight={require('../../iconos/ic_settings.png')}/>
-    };
-    const renderItem2 = ({item}) => {
-        return <Device>{({item}) => <Text>{item.name}</Text>}</Device>
     };
 
 
@@ -54,7 +42,7 @@ function BluetoothList(props) {
         }
     }, [])
 
-
+    
     const enableBluetooth = async () => {
         try {
             await BluetoothSerial.requestEnable();
@@ -66,6 +54,17 @@ function BluetoothList(props) {
             console.log(error);
         }
     };
+
+    const disableBluetooth = async () => {
+        try {
+            await BluetoothSerial.disable();
+            await BluetoothSerial.stopScanning();
+            setBolEnable(false);
+            setLista([]);
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
 
     const toggleBluetooth = value => {
@@ -89,3 +88,14 @@ function BluetoothList(props) {
 }
 
 export default BluetoothList;
+
+ /*  const lista = [
+        {
+            name: 'Cris',
+            key: '1'
+        },
+        {
+            name: 'Lara',
+            key: '2'
+        },
+    ];   */
